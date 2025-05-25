@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Common JS -->
+    <script src="/static/js/main.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar (Appears on all pages) -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/projects/">Projects</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </nav>
+
+    <!-- Content Block (Filled by child templates) -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer (Appears on all pages) -->
+    <footer>
+        &copy; 2025 My App
+    </footer>
+</body>
+</html>
